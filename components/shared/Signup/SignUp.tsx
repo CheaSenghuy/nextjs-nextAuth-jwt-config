@@ -44,7 +44,7 @@ const SignUp: NextPage = (props): JSX.Element => {
   };
 
   return (
-    <div className=" min-h-screen flex justify-center items-center  w-full bg-slate-200 relative antialiased">
+    <div className=" min-h-screen flex justify-center items-center h-[40rem] w-full bg-slate-200 relative antialiased">
       <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10  px-20 py-24 
        bg-white dark:bg-zinc-900  bg-opacity-25 backdrop-filter backdrop-blur-lg">
         <form onSubmit={handleSubmit} className="flex gap-5 flex-col 
