@@ -9,6 +9,7 @@ import { Label } from "@radix-ui/react-label";
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import { toast } from "sonner";
@@ -20,8 +21,10 @@ const SignUp: NextPage = (props): JSX.Element => {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
   const mutation = useMutation({
-    mutationFn: () => authService.register({username: userInfo.username 
-      , password:PasswordUtils.encrypt(userInfo.password)}),
+    mutationFn: () => authService.register({
+      username: userInfo.username
+      , password: PasswordUtils.encrypt(userInfo.password)
+    }),
     onSuccess: () => {
       // Invalidate and refetch
       toast.success("Account has been created complete.")
@@ -73,10 +76,9 @@ const SignUp: NextPage = (props): JSX.Element => {
             className="grid w-full max-w-sm items-center gap-1.5"
           />
           <Button type="submit" className="grid w-full max-w-sm items-center gap-1.5 bg-[#0082c8] hover:bg-teal-600" >Sign-Up</Button>
-          <Button type="submit" className="grid w-full max-w-sm items-center gap-1.5 bg-pink-600 hover:bg-violet-700"
-            onClick={() => router.push("login")}
-          >Sign-In</Button>
-
+          <p>Already have <Link href={"login"} className="text-pink-600 hover:text-violet-700">
+            account ?
+          </Link> </p>
         </form>
 
       </BackgroundGradient>

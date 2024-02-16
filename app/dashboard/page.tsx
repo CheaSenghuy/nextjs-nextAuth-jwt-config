@@ -1,10 +1,11 @@
+import Loading from '@/components/shared/Loading/Loading'
 import LogoutButton from '@/components/shared/LogoutButton'
+import NavBar from '@/components/shared/NavBar/NavBar'
 import { WelcomeToKorean } from '@/components/shared/Welcome/WelcomeToKorean'
 import { LayoutGrid } from '@/components/ui/layout-grid'
-import { Button } from '@/components/ui/moving-border'
-import { TextRevealCard } from '@/components/ui/text-reveal-card'
 import { TypewriterEffect, TypewriterEffectSmooth } from '@/components/ui/typewriter-effect'
-import React from 'react'
+import Link from 'next/link'
+import React, { Suspense } from 'react'
 
 const Page = () => {
   const words = [
@@ -21,15 +22,20 @@ const Page = () => {
   ];
   return (
     <div className="h-screen py-20 w-full z-0">
-      <div className='flex justify-end px-20 flex-1 flex-wrap '>
-        <LogoutButton />
-      </div>
-       <TypewriterEffectSmooth words={words} className='flex justify-center' />
-      <WelcomeToKorean />
-      <div className="h-full w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-        <LayoutGrid cards={cards} />
-      </div>
+      <Suspense fallback={<Loading />}>
+        <div className='flex justify-between flex-1 flex-wrap'>
+          <NavBar />
+          <div className='flex justify-end px-20 flex-1 flex-wrap '>
+            <LogoutButton />
+          </div>
+        </div>
+        <TypewriterEffectSmooth words={words} className='flex justify-center' />
+        <WelcomeToKorean />
+        <div className="h-full w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
+          <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          <LayoutGrid cards={cards} />
+        </div>
+      </Suspense>
     </div>
   )
 }

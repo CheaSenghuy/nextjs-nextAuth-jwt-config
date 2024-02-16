@@ -4,6 +4,10 @@ import { AuthRequest } from "@/lib/types/auth";
 import { PasswordUtils } from '@/utils/PasswordUtils';
 import CredentialsProvider from "next-auth/providers/credentials"
 import { NextAuthOptions, Session, User } from "next-auth";
+import GoogleProvider from 'next-auth/providers/google'
+import userService from "@/service/user.service";
+
+
 export const jwt = async ({ token, user }: { token: JWT; user?: User }) => {
 
     if (user) {
@@ -29,7 +33,6 @@ export const session = ({ session, token }: { session: Session; token: JWT }): P
 
     return Promise.resolve(session);
 };
-
 
 export const authOption: NextAuthOptions = ({
     secret: process.env.NEXTAUTH_SECRET,
@@ -65,7 +68,7 @@ export const authOption: NextAuthOptions = ({
     },
     callbacks: {
         jwt,
-        session
+        session,
     },
     pages: {
         signIn: '/login'

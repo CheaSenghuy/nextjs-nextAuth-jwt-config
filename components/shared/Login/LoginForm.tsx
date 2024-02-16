@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner"
@@ -77,9 +78,10 @@ const LoginForm: NextPage = (props): JSX.Element => {
             
           />
           <Button type="submit" className="grid w-full max-w-sm items-center gap-1.5 bg-[#0082c8] hover:bg-teal-600" >Login</Button>
-          <Button type="button" className="grid w-full max-w-sm items-center gap-1.5 bg-purple-400 hover:bg-indigo-400"
-            onClick={() => router.push("signup")} >Sign-Up</Button>
-
+          <p className="text-sm">Donnot have <Link href={"signup"} className="text-pink-600 hover:text-violet-700">
+            account ?
+          </Link> </p>
+         
         </form>
 
       </BackgroundGradient>
