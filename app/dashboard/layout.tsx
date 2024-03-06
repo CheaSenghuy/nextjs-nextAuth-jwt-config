@@ -10,7 +10,7 @@ export default function DashboardLayout({
             {/* Include shared UI here e.g. a header or sidebar */}
             <nav className="flex gap-5">
                 <Link href={"/dashboard"}>
-                dashboard</Link>
+                dashboarddddddddddddddd</Link>
                 <Link href={"/dashboard/about"}>
                 About</Link>
             </nav>
