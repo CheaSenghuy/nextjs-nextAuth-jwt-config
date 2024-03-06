@@ -7,6 +7,7 @@ const Page = () => {
             <div>Japan</div>
             <div>Khmer</div>
             <div>Cambodia</div>
+            <div>USA</div>
         </div>
     )
 }
